@@ -1,0 +1,30 @@
+import cv2
+#helps in turning on the camera
+cap = cv2.VideoCapture(0)
+
+#camera clicks the images for 3 times
+a = 0
+while (a < 3):
+    a = a+1
+
+#creating a frame
+    check, frame = cap.read()
+    print(check)
+    print(frame)
+
+#conversion of image to grayscale
+    image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+#shows the frame
+    cv2.imshow("capturing",image)
+
+#Saving Of image
+    status = cv2.imwrite('path of where the image is to be saved.jpg',image) 
+    print("Image written to file-system : ",status)
+
+#turns off the camera
+cap.release
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
